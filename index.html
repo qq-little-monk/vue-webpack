@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #app {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        ul {
+            overflow: hidden;
+            width: 450px;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            width: 150px;
+            border: 1px solid #000;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #app div {
+            width: 450px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 100px;
+            height: 100px;
+        }
+        .active{
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in list" @mouseover="tab(index)">
+                {{item.tab}}
+            </li>
+        </ul>
+        <div v-show="item.show" v-for="(item,index) in list">
+            {{item.title}}
+        </div>
+    </div>
+</body>
+<script src="vue/vue.js"></script>
+<script src="vue/index.js"></script>
+</html>
