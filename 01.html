@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01</title>
+</head>
+<body>
+    <div id="demo" >
+        <input type="text" v-model = 'search'>
+        <div v-html = 'computedhtml'></div>
+    </div>
+</body>
+<script src="vue/dist/vue.js">
+</script>
+<script>
+        new Vue({
+            el: "#demo",
+            data: {
+                search: "",
+                html:"你好12333你好32111",
+                // computedhtml:''
+            },
+            //若使用此方法，改<div v-html = 'computedhtml'></div>
+            computed:{
+                computedhtml(){
+                    var arr = this.html.split(this.search);
+                    console.log(arr)
+                    var str = arr.join("<span style = 'color:red'>"+ this.search + "</span>")
+                    return str
+                }
+            },
+
+            watch: {
+                search(){
+                    var arr = this.html.split(this.search);
+                    var str = arr.join("<span style = 'color:red'>"+ this.search + "</span>");
+                    this.html = str
+                    
+                }
+            }
+        })
+    
+</script>
+</html>

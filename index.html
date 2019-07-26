@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-练习</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, lightseagreen, #006661);
+            width: 100%;
+            line-height: 50px;
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="model"></div>
+</body>
+<script src="vue/dist/vue.js"></script>
+<script>
+    Vue.component('my-header', {
+        data() {
+            return {
+                name: 'yao'
+            }
+        },
+        props: ['text'],
+        template: `
+            <header title="name">
+                {{this.text}}
+                <slot></slot>
+            </header> 
+                `
+    });
+    new Vue({
+        el: '#model',
+        data: {
+            tex1: '未能获取地址',
+            tex2: '选择收货地址',
+            styleObjectA: {
+                height: '50px'
+            },
+            styleObjectB: {
+                textAlign: 'center'
+            },
+        },
+        template: `<div>
+                <my-header :text="tex1" >
+                    <br/><input type="text" placeholder="搜索饿了么商家商品名称"/>
+                </my-header>
+                <my-header :text="tex2" :style="[styleObjectA,styleObjectB]"></my-header>
+            </div>  `
+
+    });
+</script>
+
+</html>
